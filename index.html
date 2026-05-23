@@ -186,6 +186,28 @@
 
     .btn-secondary:hover { border-color: var(--warm); color: var(--warm); }
 
+    /* Brillitos */
+    @keyframes shimmer {
+      0%   { background-position: -300% center; }
+      100% { background-position: 300% center; }
+    }
+
+    .brillito {
+      background: linear-gradient(
+        90deg,
+        var(--warm) 0%,
+        #c084fc 35%,
+        #ffffff 50%,
+        #c084fc 65%,
+        var(--warm) 100%
+      );
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 5s linear infinite;
+    }
+
     /* Hero overrides: accent negro sobre video */
     .hero .hero-tag {
       color: var(--white);
@@ -384,7 +406,7 @@
 <body>
 
   <nav>
-    <a href="#" class="nav-logo">Kinky Toymaker</a>
+    <a href="#" class="nav-logo brillito">Kinky Toymaker</a>
     <ul class="nav-links">
       <li><a href="#caracteristicas">Características</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -413,7 +435,7 @@
     <div class="features-inner">
       <div class="features-header">
         <div>
-          <span class="section-label">Características</span>
+          <span class="section-label brillito">Características</span>
           <h2 class="section-title">Pensada hasta<br>el último tornillo.</h2>
         </div>
       </div>
@@ -424,7 +446,7 @@
             <img src="gallery/perfil.jpg" alt="Máquina ensamblada a mano" loading="lazy">
           </div>
           <div class="feature-content">
-            <div class="feature-num">01</div>
+            <div class="feature-num brillito">01</div>
             <div class="feature-title">100% argentina</div>
             <div class="feature-desc">Diseñada, fabricada y ensamblada acá. Cada pieza pensada y probada en casa.</div>
           </div>
@@ -432,7 +454,7 @@
 
         <div class="feature-item">
           <div class="feature-content">
-            <div class="feature-num">02</div>
+            <div class="feature-num brillito">02</div>
             <div class="feature-title">Customizable</div>
             <div class="feature-desc">Pedila como quieras. Colores, terminaciones y piezas a medida.</div>
           </div>
@@ -440,7 +462,7 @@
 
         <div class="feature-item">
           <div class="feature-content">
-            <div class="feature-num">03</div>
+            <div class="feature-num brillito">03</div>
             <div class="feature-title">Reparable de por vida</div>
             <div class="feature-desc">Todas las piezas se reemplazan. Si algo se rompe, se arregla. Si querés mejorarla, se mejora.</div>
           </div>
@@ -451,7 +473,7 @@
             <img src="gallery/base.jpg" alt="Base de madera barnizada" loading="lazy">
           </div>
           <div class="feature-content">
-            <div class="feature-num">04</div>
+            <div class="feature-num brillito">04</div>
             <div class="feature-title">Madera barnizada</div>
             <div class="feature-desc">Base de madera maciza barnizada a mano. Cálida, sólida, duradera.</div>
           </div>
@@ -459,7 +481,7 @@
 
         <div class="feature-item">
           <div class="feature-content">
-            <div class="feature-num">05</div>
+            <div class="feature-num brillito">05</div>
             <div class="feature-title">Compatible con todos los dildos</div>
             <div class="feature-desc">Puntas intercambiables que se adaptan a cualquier juguete.</div>
           </div>
@@ -472,7 +494,7 @@
             </video>
           </div>
           <div class="feature-content">
-            <div class="feature-num">06</div>
+            <div class="feature-num brillito">06</div>
             <div class="feature-title">Fácil de usar</div>
             <div class="feature-desc">Pensada para que la enchufes y disfrutes. Sin manuales eternos.</div>
           </div>
@@ -480,7 +502,7 @@
 
         <div class="feature-item">
           <div class="feature-content">
-            <div class="feature-num">07</div>
+            <div class="feature-num brillito">07</div>
             <div class="feature-title">Cable largo</div>
             <div class="feature-desc">Largo generoso para acomodarla donde quieras sin pelearte con el enchufe.</div>
           </div>
@@ -491,7 +513,7 @@
             <img src="gallery/regulador-profundidad.jpg" alt="Regulador de profundidad" loading="lazy">
           </div>
           <div class="feature-content">
-            <div class="feature-num">08</div>
+            <div class="feature-num brillito">08</div>
             <div class="feature-title">Todo regulable</div>
             <div class="feature-desc">Altura, ángulo, velocidad y profundidad. Ajustá cada detalle a tu ritmo.</div>
           </div>
@@ -502,7 +524,7 @@
             <img src="gallery/sopapas.jpg" alt="Patas de sopapa modulares" loading="lazy">
           </div>
           <div class="feature-content">
-            <div class="feature-num">09</div>
+            <div class="feature-num brillito">09</div>
             <div class="feature-title">Patas de sopapa modulares</div>
             <div class="feature-desc">Máxima adhesión al piso. Se sacan para usarla en la cama — recomendamos entre el colchón y el sommier.</div>
           </div>
@@ -515,7 +537,7 @@
   <!-- CTA / CONTACTO -->
   <section id="contacto">
     <div class="cta-inner">
-      <span class="section-label">Contacto</span>
+      <span class="section-label brillito">Contacto</span>
       <h2 class="section-title">¿La querés en tu telo, en tu cama, en tu vida?</h2>
       <p class="section-desc">Escribime y armamos la tuya. Cada máquina se hace a pedido, con las customizaciones que quieras.</p>
       <a href="mailto:mathigatti@gmail.com" class="btn-dark">Contactar</a>
