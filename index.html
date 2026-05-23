@@ -210,43 +210,6 @@
       max-width: 480px;
     }
 
-    /* GALLERY */
-    #galeria {
-      background: var(--dark);
-    }
-
-    .gallery-header {
-      max-width: 1100px;
-      margin: 0 auto 3rem;
-    }
-
-    .gallery-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-    }
-
-    .gallery-item {
-      aspect-ratio: 4/3;
-      background: #111;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gallery-item img,
-    .gallery-item video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.35s ease;
-    }
-
-    .gallery-item:hover img,
-    .gallery-item:hover video { transform: scale(1.04); }
-
     /* FEATURES */
     #caracteristicas {
       background: var(--black);
@@ -270,20 +233,38 @@
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+      gap: 1px;
+      background: var(--border);
     }
 
     .feature-item {
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .feature-item.has-media .feature-media {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .feature-item.has-media .feature-media img,
+    .feature-item.has-media .feature-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .feature-item:hover .feature-media img,
+    .feature-item:hover .feature-media video { transform: scale(1.04); }
+
+    .feature-content {
+      padding: 1.75rem 2.5rem;
+    }
+
+    .feature-item:not(.has-media) .feature-content {
       padding: 2rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .feature-item:not(:nth-child(3n)) {
-      border-right: 1px solid var(--border);
-    }
-
-    .feature-item:nth-child(n+7) {
-      border-bottom: none;
     }
 
     .feature-num {
@@ -365,22 +346,14 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero-text { padding: 3rem 1.5rem 4rem; }
-
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-
       .features-header { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr 1fr; }
-      .feature-item:nth-child(n+7) { border-bottom: 1px solid var(--border); }
-      .feature-item:last-child { border-bottom: none; }
-
       nav { padding: 1rem 1.2rem; }
       .nav-links { gap: 1.2rem; }
     }
 
     @media (max-width: 600px) {
       .features-grid { grid-template-columns: 1fr; }
-      .feature-item { border-right: none !important; padding-right: 0 !important; }
-      .feature-item:nth-child(n+9) { border-bottom: none; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
       .nav-links { display: none; }
     }
@@ -391,7 +364,6 @@
   <nav>
     <a href="#" class="nav-logo">Kinky Toymaker</a>
     <ul class="nav-links">
-      <li><a href="#galeria">Galería</a></li>
       <li><a href="#caracteristicas">Características</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -409,46 +381,7 @@
       <p class="hero-subtitle">Modular, reparable y totalmente regulable. Pensada para telos, para tu casa, para la cama o el piso. Cada pieza diseñada y armada acá.</p>
       <div class="hero-btns">
         <a href="#contacto" class="btn-primary">Quiero una</a>
-        <a href="#galeria" class="btn-secondary">Ver la máquina</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="galeria">
-    <div class="gallery-header">
-      <span class="section-label">Galería</span>
-      <h2 class="section-title">La pieza, de cerca.</h2>
-      <p class="section-desc">Más fotos próximamente</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="gallery/principal.jpg" alt="Vista principal de la máquina" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="gallery/perfil.jpg" alt="Perfil de la máquina" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <video autoplay muted loop playsinline preload="none">
-          <source src="gallery/movimiento-rapido.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="gallery-item">
-        <img src="gallery/base.jpg" alt="Base de madera barnizada" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="gallery/regulador-profundidad.jpg" alt="Regulador de profundidad" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <video autoplay muted loop playsinline preload="none">
-          <source src="gallery/movimiento-lento.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="gallery-item">
-        <img src="gallery/sopapas.jpg" alt="Patas de sopapa modulares" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="gallery/perilla.jpg" alt="Perilla reguladora" loading="lazy">
+        <a href="#caracteristicas" class="btn-secondary">Ver la máquina</a>
       </div>
     </div>
   </section>
@@ -463,51 +396,96 @@
         </div>
       </div>
       <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-num">01</div>
-          <div class="feature-title">100% argentina</div>
-          <div class="feature-desc">Diseñada, fabricada y ensamblada acá. Cada pieza pensada y probada en casa.</div>
+
+        <div class="feature-item has-media">
+          <div class="feature-media">
+            <img src="gallery/perfil.jpg" alt="Máquina ensamblada a mano" loading="lazy">
+          </div>
+          <div class="feature-content">
+            <div class="feature-num">01</div>
+            <div class="feature-title">100% argentina</div>
+            <div class="feature-desc">Diseñada, fabricada y ensamblada acá. Cada pieza pensada y probada en casa.</div>
+          </div>
         </div>
+
         <div class="feature-item">
-          <div class="feature-num">02</div>
-          <div class="feature-title">Customizable</div>
-          <div class="feature-desc">Pedila como quieras. Colores, terminaciones y piezas a medida.</div>
+          <div class="feature-content">
+            <div class="feature-num">02</div>
+            <div class="feature-title">Customizable</div>
+            <div class="feature-desc">Pedila como quieras. Colores, terminaciones y piezas a medida.</div>
+          </div>
         </div>
+
         <div class="feature-item">
-          <div class="feature-num">03</div>
-          <div class="feature-title">Reparable de por vida</div>
-          <div class="feature-desc">Todas las piezas se reemplazan. Si algo se rompe, se arregla. Si querés mejorarla, se mejora.</div>
+          <div class="feature-content">
+            <div class="feature-num">03</div>
+            <div class="feature-title">Reparable de por vida</div>
+            <div class="feature-desc">Todas las piezas se reemplazan. Si algo se rompe, se arregla. Si querés mejorarla, se mejora.</div>
+          </div>
         </div>
+
+        <div class="feature-item has-media">
+          <div class="feature-media">
+            <img src="gallery/base.jpg" alt="Base de madera barnizada" loading="lazy">
+          </div>
+          <div class="feature-content">
+            <div class="feature-num">04</div>
+            <div class="feature-title">Madera barnizada</div>
+            <div class="feature-desc">Base de madera maciza barnizada a mano. Cálida, sólida, duradera.</div>
+          </div>
+        </div>
+
         <div class="feature-item">
-          <div class="feature-num">04</div>
-          <div class="feature-title">Madera barnizada</div>
-          <div class="feature-desc">Base de madera maciza barnizada a mano. Cálida, sólida, duradera.</div>
+          <div class="feature-content">
+            <div class="feature-num">05</div>
+            <div class="feature-title">Compatible con todos los dildos</div>
+            <div class="feature-desc">Puntas intercambiables que se adaptan a cualquier juguete.</div>
+          </div>
         </div>
+
+        <div class="feature-item has-media">
+          <div class="feature-media">
+            <video autoplay muted loop playsinline preload="none">
+              <source src="gallery/movimiento-rapido.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="feature-content">
+            <div class="feature-num">06</div>
+            <div class="feature-title">Fácil de usar</div>
+            <div class="feature-desc">Pensada para que la enchufes y disfrutes. Sin manuales eternos.</div>
+          </div>
+        </div>
+
         <div class="feature-item">
-          <div class="feature-num">05</div>
-          <div class="feature-title">Compatible con todos los dildos</div>
-          <div class="feature-desc">Puntas intercambiables que se adaptan a cualquier juguete.</div>
+          <div class="feature-content">
+            <div class="feature-num">07</div>
+            <div class="feature-title">Cable largo</div>
+            <div class="feature-desc">Largo generoso para acomodarla donde quieras sin pelearte con el enchufe.</div>
+          </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-num">06</div>
-          <div class="feature-title">Fácil de usar</div>
-          <div class="feature-desc">Pensada para que la enchufes y disfrutes. Sin manuales eternos.</div>
+
+        <div class="feature-item has-media">
+          <div class="feature-media">
+            <img src="gallery/regulador-profundidad.jpg" alt="Regulador de profundidad" loading="lazy">
+          </div>
+          <div class="feature-content">
+            <div class="feature-num">08</div>
+            <div class="feature-title">Todo regulable</div>
+            <div class="feature-desc">Altura, ángulo, velocidad y profundidad. Ajustá cada detalle a tu ritmo.</div>
+          </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-num">07</div>
-          <div class="feature-title">Cable largo</div>
-          <div class="feature-desc">Largo generoso para acomodarla donde quieras sin pelearte con el enchufe.</div>
+
+        <div class="feature-item has-media">
+          <div class="feature-media">
+            <img src="gallery/sopapas.jpg" alt="Patas de sopapa modulares" loading="lazy">
+          </div>
+          <div class="feature-content">
+            <div class="feature-num">09</div>
+            <div class="feature-title">Patas de sopapa modulares</div>
+            <div class="feature-desc">Máxima adhesión al piso. Se sacan para usarla en la cama — recomendamos entre el colchón y el sommier.</div>
+          </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-num">08</div>
-          <div class="feature-title">Todo regulable</div>
-          <div class="feature-desc">Altura, ángulo, velocidad y profundidad. Ajustá cada detalle a tu ritmo.</div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-num">09</div>
-          <div class="feature-title">Patas de sopapa modulares</div>
-          <div class="feature-desc">Máxima adhesión al piso. Se sacan para usarla en la cama — recomendamos entre el colchón y el sommier.</div>
-        </div>
+
       </div>
     </div>
   </section>
