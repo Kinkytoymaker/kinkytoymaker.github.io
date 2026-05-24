@@ -399,7 +399,7 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero-text { padding: 3rem 1.5rem 4rem; }
+      .hero-text { padding: 3rem 1.5rem 3rem; }
       .features-header { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       nav { padding: 1rem 1.2rem; }
@@ -407,10 +407,47 @@
     }
 
     @media (max-width: 600px) {
+      .hero {
+        height: 100vh;
+        height: 100svh;
+        min-height: unset;
+      }
+      .hero-text {
+        padding: 1.2rem 1.5rem 1.8rem;
+      }
+      .hero-tag { margin-bottom: 0.6rem; }
+      .hero-title {
+        font-size: 1.85rem;
+        margin-bottom: 0.6rem;
+      }
+      .hero-subtitle {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+      }
+      .hero-btns {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .hero-btns a { text-align: center; padding: 0.75rem 1.5rem; }
       .features-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
       .nav-links { display: none; }
     }
+
+    /* Footer credit */
+    footer { flex-wrap: wrap; }
+    .footer-credit {
+      width: 100%;
+      text-align: center;
+      font-size: 0.7rem;
+      opacity: 0.55;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .footer-credit a { color: var(--muted); text-decoration: none; }
+    .footer-credit a:hover { color: var(--warm); }
   </style>
 </head>
 <body>
@@ -582,6 +619,7 @@
   <footer>
     <span>© 2026 Kinky Toymaker — Hecho en Argentina.</span>
     <span>+18 · Uso responsable.</span>
+    <span class="footer-credit">Video: <a href="https://mymember.site/cruel-captive" target="_blank" rel="noopener">Cruel Captive</a></span>
   </footer>
 
 </body>
